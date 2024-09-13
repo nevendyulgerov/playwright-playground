@@ -1,0 +1,39 @@
+name: End-to-end testing
+on: [push]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.6.0
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Install Playwright
+        run: yarn playwright install --with-deps
+
+      #      - name: Install linux deps
+      #        run: |
+      #          sudo apt-get install --no-install-recommends -y \
+      #          fluxbox \
+      #          xvfb
+      #
+      #      - name: Run xvfb and fluxbox
+      #        run: |
+      #          Xvfb :0 -screen 0 1024x768x24 -listen tcp -ac &
+      #          fluxbox
+      #        env:
+      #          DISPLAY: :0.0
+
+      - name: Run e2e tests
+        run: yarn test:e2e
