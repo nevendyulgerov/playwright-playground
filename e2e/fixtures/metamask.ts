@@ -24,7 +24,7 @@ export const test = baseTest.extend<{
 
         // CI specific browser args
         if (true) {
-            browserArgs.push("--disable-gpu");
+            // browserArgs.push("--disable-gpu");
             browserArgs.push("--headless=new");
         }
 
