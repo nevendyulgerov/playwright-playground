@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "test:e2e": "xvfb-run npx playwright test --headed"
+    "test:e2e": "xvfb-run npx playwright test"
   },
   "dependencies": {},
   "devDependencies": {
