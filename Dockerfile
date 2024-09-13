@@ -1,8 +1,17 @@
-# Container image that runs your code
-FROM alpine:3.10
+# syntax=docker/dockerfile:1
+FROM --platform=linux/amd64 synthetixio/docker-e2e:18.16-ubuntu as base
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+RUN mkdir /app
+WORKDIR /app
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+RUN apt update && apt install -y nginx
+
+COPY nginx.conf /etc/nginx/sites-available/default
+
+COPY package.json ./
+
+FROM base as test
+
+RUN yarn install --prefer-offline
+
+COPY . .

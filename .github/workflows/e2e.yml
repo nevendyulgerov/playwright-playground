@@ -16,12 +16,12 @@ jobs:
           node-version: 22.6.0
           cache: "yarn"
 
-#      - name: Install dependencies
-#        run: yarn install --frozen-lockfile
-#
-#      - name: Install Playwright
-#        run: yarn playwright install --with-deps
-#
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Install Playwright
+        run: yarn playwright install --with-deps
+
 #      - name: Install linux deps
 #        run: |
 #          sudo apt-get install --no-install-recommends -y \
