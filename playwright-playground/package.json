@@ -1,0 +1,16 @@
+{
+    "name": "playwright-playground",
+    "private": true,
+    "version": "0.0.1",
+    "scripts": {
+        "test:e2e": "playwright test"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@playwright/test": "^1.37.0",
+        "@synthetixio/synpress": "^3.7.3",
+        "ts-node": "^10",
+        "typescript": "^5",
+        "vitest": "^2.0.5"
+    }
+}
