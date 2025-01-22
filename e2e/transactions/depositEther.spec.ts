@@ -9,8 +9,7 @@ test.describe.configure({
 
 test.describe.serial("Ether Deposit form", () => {
     let page: Page;
-    test.beforeAll(async ({ browser }) => {
-        const context = await browser.newContext();
+    test.beforeAll(async ({ context }) => {
         page = await context.newPage();
     });
 
