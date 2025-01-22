@@ -18,12 +18,6 @@ test.describe.serial("Ether Deposit form", () => {
         await browser.close();
     });
 
-    test.afterEach(async ({ context }) => {
-        if (context) {
-            await context.close();
-        }
-    });
-
     test("should render 'Ether Deposit' transaction form", async () => {
         await page.goto("/");
 
